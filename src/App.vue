@@ -30,7 +30,7 @@ const toggleSidebar = () => {
     </HeaderComponent>
     <div class="flex w-full" style="height: calc(100vh - 86px);">
       <SidebarComponent
-        :sidebarClass="['ml-[-300px] lg:ml-0', isSidebarOpen ? '' : 'ml-[-300px]!', 'transition-all duration-500 ease-in-out min-w-[300px] max-w-[300px]']">
+        :sidebarClass="['ml-[-300px] lg:ml-0', isSidebarOpen ? 'ml-0!' : 'ml-[-300px]!', 'transition-all duration-500 ease-in-out min-w-[300px] max-w-[300px]']">
         <RouterView />
       </SidebarComponent>
     </div>
