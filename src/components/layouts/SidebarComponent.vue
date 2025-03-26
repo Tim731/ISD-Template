@@ -108,8 +108,6 @@ onMounted(() => {
 
 <style scoped>
 .sidebar-custom {
-  min-width: 300px;
-  max-width: 300px;
   background: transparent url('/img/Maintenance.png') 50% 10% no-repeat padding-box;
   box-shadow: 0px 3px 6px #00000029;
   padding: 10px;
@@ -117,9 +115,7 @@ onMounted(() => {
   font: normal normal normal 14px/17px Roboto;
   letter-spacing: 0px;
   /* Ensure the sidebar content takes up available space */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+
 }
 
 .sidebar-link:hover {

@@ -8,6 +8,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: () => import('../views/samples/HomeView.vue'),
+      meta: { withHeader: true }
     },
     {
       path: '/buttons',
@@ -16,6 +17,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/samples/ButtonsSample.vue'),
+      meta: { withHeader: true }
     },
   ],
 })

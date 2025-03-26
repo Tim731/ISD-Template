@@ -2,9 +2,9 @@
   <header class="header-custom">
     <div class="header-content">
       <div class="flex items-center">
-        <!-- <Button class="p-2 rounded-md hover:bg-gray-300 mr-4" @click="toggleSidebar">
+        <Button class="p-2 rounded-md hover:bg-gray-300 mr-4" @click="toggleSidebar" text>
           <i class="pi pi-bars"></i>
-        </Button> -->
+        </Button>
         <h1 class="text-xl font-bold ml-5">
           {{ title }}
         </h1>
