@@ -1,0 +1,103 @@
+/* f:\projects\template\src\assets\base.css */
+/* color palette from <https://github.com/vuejs/theme> */
+
+body {
+  font-family: 'Roboto', sans-serif;
+  /* Set Roboto as the default font */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* :root {
+  --p-button-primary-color: #FFFFFF;
+  --p-button-primary-background: #007A33;
+  --p-button-primary-border-color: #007A33;
+  --p-button-primary-hover-background: #005D27;
+  --p-button-primary-active-background: #00401B;
+
+  --p-button-outlined-primary-hover-background: transparent;
+  --p-button-outlined-primary-border-color: #007A33;
+  --p-button-outlined-primary-color: #007A33;
+
+  --p-icon-size: 1rem;
+  --p-form-field-border-radius: var(--p-border-radius-lg);
+} */
+
+:root {
+  --p-primary-50: #e6f7ec;
+  --p-primary-100: #ccefd9;
+  --p-primary-200: #99dfb4;
+  --p-primary-300: #66cf90;
+  --p-primary-400: #33bf6b;
+  --p-primary-500: #007A33;
+  /* Updated Primary Color */
+  --p-primary-600: #00682c;
+  --p-primary-700: #005725;
+  --p-primary-800: #00451e;
+  --p-primary-900: #003217;
+  --p-primary-950: #001d0e;
+
+  --p-surface-0: #ffffff;
+  --p-surface-50: #f0f8f4;
+  --p-surface-100: #e0ede6;
+  --p-surface-200: #c5e0d0;
+  --p-surface-300: #a1c4b3;
+  --p-surface-400: #8ab09b;
+  --p-surface-500: #6e9b8c;
+  --p-surface-600: #557b71;
+  --p-surface-700: #3f5f59;
+  --p-surface-800: #2d4846;
+  --p-surface-900: #1b2e2b;
+  --p-surface-950: #0d1816;
+
+  --p-active-color: #FCA311;
+  --p-content-border-radius: 8px;
+}
+
+/* Light Mode */
+:root {
+  --p-primary-color: var(--p-primary-500);
+  --p-primary-contrast-color: var(--p-surface-0);
+  --p-primary-hover-color: var(--p-primary-600);
+  --p-primary-active-color: var(--p-primary-700);
+  --p-content-border-color: var(--p-surface-200);
+  --p-content-hover-background: var(--p-surface-100);
+  --p-content-hover-color: var(--p-surface-800);
+  --p-highlight-background: var(--p-primary-50);
+  --p-highlight-color: var(--p-primary-700);
+  --p-highlight-focus-background: var(--p-primary-100);
+  --p-highlight-focus-color: var(--p-primary-800);
+  --p-text-color: var(--p-surface-700);
+  --p-text-hover-color: var(--p-surface-800);
+  --p-text-muted-color: var(--p-surface-500);
+  --p-text-hover-muted-color: var(--p-surface-600);
+
+  --p-button-outlined-primary-border-color: var(--p-primary-500);
+
+}
+
+
+.p-button-label {
+  font: normal normal 14px Roboto;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  font-weight: 450;
+}
+
+.p-button-outlined {
+  background: transparent;
+}
+
+.p-button-outlined:not(:disabled):hover {
+  /* border-color: var(--p-primary-800); */
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.p-button.faded .p-button-label {
+  color: var(--p-primary-500);
+}
+
+.p-button.faded {
+  background-color: var(--p-primary-300);
+  border-color: var(--p-primary-300);
+}
