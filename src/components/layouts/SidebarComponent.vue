@@ -5,59 +5,106 @@
         <li v-if="sidebarUncategorizedLinks.length > 0" class="mb-4">
           <ul class="list-none p-0 m-0">
             <li v-for="link in sidebarUncategorizedLinks" :key="link.to" class="">
-              <RouterLink :to="link.to" class="sidebar-link p-2 rounded-md hover:text-secondary flex items-center gap-2"
-                active-class="active-sidebar-link">
+              <RouterLink
+                :to="link.to"
+                class="sidebar-link p-2 rounded-md hover:text-secondary flex items-center gap-2"
+                active-class="active-sidebar-link"
+                :class="[ route.path === link.to ? 'text-amber-500 font-bold' : 'text-white']"
+              >
                 <i :class="link.icon"></i>
                 {{ link.label }}
               </RouterLink>
             </li>
           </ul>
         </li>
-        <template v-for="category in sidebarCategories" :key="category.name">
-          <li class="mt-4">
-            <div class="flex items-center justify-between cursor-pointer" @click="toggleCategory(category)">
-              <h4 class="font-bold">{{ category.name }}</h4>
-              <i :class="['pi', category.isOpen ? 'pi-chevron-down' : 'pi-chevron-right']"></i>
-            </div>
-            <div class="overflow-hidden transition-all duration-300 ease-in-out"
-              :class="{ 'max-h-0': !category.isOpen, 'max-h-[1000px]': category.isOpen }">
-              <ul class="list-none mt-4">
-                <template v-for="subCategory in category.children" :key="subCategory.name">
-                  <li class="mb-2">
-                    <div class="flex items-center justify-between cursor-pointer" @click="toggleCategory(subCategory)">
-                      <h5 class="font-semibold ml-4">{{ subCategory.name }}</h5>
-                      <i :class="['pi', subCategory.isOpen ? 'pi-chevron-down' : 'pi-chevron-right']"></i>
-                    </div>
-                    <div class="overflow-hidden transition-all duration-300 ease-in-out"
-                      :class="{ 'max-h-0': !subCategory.isOpen, 'max-h-[1000px]': subCategory.isOpen }">
-                      <ul class="list-none p-0 m-0">
-                        <li v-for="link in subCategory.links" :key="link.to" class="">
-                          <RouterLink :to="link.to"
-                            class="sidebar-link p-2 rounded-md hover:text-secondary flex items-center gap-2 ml-8"
-                            active-class="active-sidebar-link">
-                            <i :class="link.icon"></i>
-                            {{ link.label }}
-                          </RouterLink>
-                        </li>
-                      </ul>
-                    </div>
+        <template v-if="sidebarCategories.length > 0">
+          <template v-for="category in sidebarCategories" :key="category.name">
+            <li class="mt-4">
+              <div
+                class="flex items-center justify-between cursor-pointer"
+                @click="toggleCategory(category)"
+              >
+                <h4 class="font-bold">{{ category.name }}</h4>
+                <i :class="['pi', category.isOpen ? 'pi-chevron-down' : 'pi-chevron-right']"></i>
+              </div>
+              <div
+                class="overflow-hidden transition-all duration-300 ease-in-out"
+                :class="{ 'max-h-0': !category.isOpen, 'max-h-[1000px]': category.isOpen }"
+              >
+                <ul class="list-none mt-4">
+                  <template v-for="subCategory in category.children" :key="subCategory.name">
+                    <li class="mb-2">
+                      <div
+                        class="flex items-center justify-between cursor-pointer"
+                        @click="toggleCategory(subCategory)"
+                      >
+                        <h5 class="font-semibold ml-4">{{ subCategory.name }}</h5>
+                        <i
+                          :class="['pi', subCategory.isOpen ? 'pi-chevron-down' : 'pi-chevron-right']"
+                        ></i>
+                      </div>
+                      <div
+                        class="overflow-hidden transition-all duration-300 ease-in-out"
+                        :class="{
+                          'max-h-0': !subCategory.isOpen,
+                          'max-h-[1000px]': subCategory.isOpen,
+                        }"
+                      >
+                        <ul class="list-none p-0 m-0">
+                          <li v-for="link in subCategory.links" :key="link.to" class="">
+                            <RouterLink
+                              :to="link.to"
+                              class="sidebar-link p-2 rounded-md hover:text-secondary flex items-center gap-2 ml-8"
+                              active-class="active-sidebar-link"
+                              :class="[ route.path === link.to ? 'text-amber-500 font-bold' : 'text-white']"
+                            >
+                              <i :class="link.icon"></i>
+                              {{ link.label }}
+                            </RouterLink>
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </template>
+                  <li v-for="link in category.links" :key="link.to" class="">
+                    <RouterLink
+                      :to="link.to"
+                      class="sidebar-link p-2 rounded-md hover:text-secondary flex items-center gap-2 ml-4"
+                      active-class="active-sidebar-link"
+                      :class="[ route.path === link.to ? 'text-amber-500 font-bold' : 'text-white']"
+                    >
+                      <i :class="link.icon"></i>
+                      {{ link.label }}
+                    </RouterLink>
                   </li>
-                </template>
-                <li v-for="link in category.links" :key="link.to" class="">
-                  <RouterLink :to="link.to"
-                    class="sidebar-link p-2 rounded-md hover:text-secondary flex items-center gap-2 ml-4"
-                    active-class="active-sidebar-link">
-                    <i :class="link.icon"></i>
-                    {{ link.label }}
-                  </RouterLink>
-                </li>
-              </ul>
-            </div>
-          </li>
+                </ul>
+              </div>
+            </li>
+          </template>
         </template>
-
+        <template v-if="sidebarwithHeaderLinks.length > 0">
+          <ul class="list-none p-0 m-0">
+            <template v-for="headerLink in sidebarwithHeaderLinks" :key="headerLink.name">
+              <template v-if="headerLink.name !== ''">
+                <!-- <hr class="text-white"/> -->
+                <h4 class=" my-2 text-white text-bold">{{ headerLink.name }}</h4>
+                <!-- <hr class="text-white"/> -->
+              </template>
+              <li v-for="link in headerLink.links" :key="link.to" class="">
+                <RouterLink
+                  :to="link.to"
+                  class="sidebar-link p-2 rounded-md hover:text-secondary flex items-center gap-2 ml-4 font-normal"
+                  active-class="active-sidebar-link"
+                  :class="[ route.path === link.to ? 'text-amber-500' : 'text-white']"
+                >
+                  <i :class="link.icon"></i>
+                  {{ link.label }}
+                </RouterLink>
+              </li>
+            </template>
+          </ul>
+        </template>
       </ul>
-
     </nav>
     <footer class="flex w-full flex-col mt-auto text-center text-xs">
       <span>
@@ -74,10 +121,12 @@
 </template>
 
 <script setup>
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import { useSidebarStore } from '@/stores/sidebar';
 import { storeToRefs } from 'pinia';
 import { onMounted } from 'vue';
+
+const route = useRoute()
 
 const props = defineProps({
   sidebarClass: {
@@ -88,7 +137,7 @@ const props = defineProps({
 
 const sidebarStore = useSidebarStore();
 const { getCategories, getUncategorizedLinks } = sidebarStore;
-const { categories: sidebarCategories, uncategorizedLinks: sidebarUncategorizedLinks } = storeToRefs(sidebarStore);
+const { categories: sidebarCategories, uncategorizedLinks: sidebarUncategorizedLinks, withHeaderLinks: sidebarwithHeaderLinks } = storeToRefs(sidebarStore);
 
 const toggleCategory = (category) => {
   category.isOpen = !category.isOpen;

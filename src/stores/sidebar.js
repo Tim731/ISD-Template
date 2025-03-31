@@ -40,11 +40,27 @@ export const useSidebarStore = defineStore('sidebar', {
           },
         ],
       },
-    ]
+    ],
+    withHeaderLinks: [{
+      name: 'My Header',
+      links: [
+        {
+          label: 'Home',
+          to: '/temp_1',
+          icon: 'pi pi-home',
+        },
+        {
+          label: 'Home 2',
+          to: '/temp_2',
+          icon: 'pi pi-home',
+        },
+      ]
+    }]
   }),
   getters: {
     getCategories: (state) => state.categories,
     getUncategorizedLinks: (state) => state.uncategorizedLinks,
+    getWithHeaderLinks: (state) => state.withHeaderLinks,
   },
   actions: {
     addLink(categoryName, link, parentCategoryName = null) {
