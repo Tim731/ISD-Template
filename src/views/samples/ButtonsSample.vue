@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
     <label class="text-lg font-bold mt-5">Default</label>
-    <div class="card flex justify-center flex-wrap gap-4">
+    <div class="card flex flex-wrap gap-4">
       <Button label="Primary" />
       <Button label="Secondary" severity="secondary" />
       <Button label="Success" severity="success" />
@@ -13,7 +13,7 @@
     </div>
 
     <label class="text-lg font-bold mt-5">Outlined</label>
-    <div class="card flex justify-center flex-wrap gap-4">
+    <div class="card flex flex-wrap gap-4">
       <Button label="Primary" outlined />
       <Button label="Secondary" severity="secondary" outlined />
       <Button label="Success" severity="success" outlined />
@@ -25,7 +25,7 @@
     </div>
 
     <label class="text-lg font-bold mt-5">Faded</label>
-    <div class="card flex justify-center flex-wrap gap-4">
+    <div class="card flex flex-wrap gap-4">
       <Button label="Primary" class="faded" />
       <Button label="Secondary" severity="secondary" />
       <Button label="Success" severity="success" />

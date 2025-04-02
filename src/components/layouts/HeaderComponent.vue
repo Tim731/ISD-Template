@@ -5,9 +5,9 @@
         <Button class="p-2 rounded-md hover:bg-gray-300 mr-4" @click="toggleSidebar" text>
           <i class="pi pi-bars"></i>
         </Button>
-        <h1 class="text-xl font-bold ml-5">
+        <span class="text-sm lg:text-xl font-bold lg:ml-5">
           {{ title }}
-        </h1>
+        </span>
       </div>
       <div class="flex items-center">
         <!-- Add any header actions here, e.g., user profile, notifications -->
