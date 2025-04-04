@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import { useAuthStore } from '../stores/authStore';
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(import.meta.env.VITE_BASE_URL),
   routes: [
     {
       path: '/',
@@ -19,7 +19,25 @@ const router = createRouter({
       component: () => import('../views/samples/ButtonsSample.vue'),
       meta: { withHeader: true }
     },
+    {
+      path: '/login',
+      name: 'Login',
+      component: () => import('../views/auth/Login.vue'),
+      meta: { withHeader: false }
+    },
   ],
 })
+
+// Global navigation guard to check for authentication
+router.beforeEach((to, from, next) => {
+  const authStore = useAuthStore(); // Access the Pinia auth store
+
+  if (to.matched.some(record => record.meta.requiresAuth) && !authStore.isAuthenticated) {
+    // Redirect to login page if not authenticated
+    next({ name: 'Login' });
+  } else {
+    next();
+  }
+});
 
 export default router

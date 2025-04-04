@@ -30,6 +30,9 @@ body {
   --muted-blue-gray: #4F5D75;
   --deep-aqua: #005F73;
   --dark-plum: #6A0572;
+
+  --black: #000000;
+  --gray: #B0B0B0;
 }
 
 :root {
@@ -83,6 +86,8 @@ body {
 
   --p-button-outlined-primary-border-color: var(--p-primary-500);
 
+  --p-form-field-color: var(--p-surface-950);
+  --p-form-field-border-color: var(--gray);
 }
 
 @theme {

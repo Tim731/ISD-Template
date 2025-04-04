@@ -11,16 +11,29 @@
       </div>
       <div class="flex items-center">
         <!-- Add any header actions here, e.g., user profile, notifications -->
-        <slot name="actions"></slot>
+        <slot name="actions">
+          <div class="text-sm lg:text-lg font-bold">
+            <span>Mabuhay, </span>
+            <span class="font-bold"> Ranniel! </span>
+            <Button severity="success" text class="lg:ml-3" @click="handleLogout()">
+              <i class="pi pi-sign-out "></i>
+            </Button>
+          </div>
+        </slot>
       </div>
     </div>
   </header>
 </template>
 
 <script setup>
-// Remove: import { ref } from 'vue'; // No longer needed
-
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '../../stores/authStore';
+import { useToast } from 'primevue/usetoast';
 import Button from 'primevue/button';
+
+const authStore = useAuthStore();
+const router = useRouter();
+const toast = useToast();
 
 const props = defineProps({
   title: {
@@ -33,6 +46,17 @@ const emit = defineEmits(['toggle-sidebar']);
 
 const toggleSidebar = () => {
   emit('toggle-sidebar');
+};
+
+const handleLogout = async () => {
+  const success = await authStore.logout();
+
+  if (success) {
+    toast.add({ severity: 'success', summary: 'Logged out', detail: 'You have successfully logged out.', life: 3000 });
+    router.push({ name: 'Login' });
+  } else {
+    toast.add({ severity: 'error', summary: 'Logout Failed', detail: 'An error occurred while logging out.', life: 3000 });
+  }
 };
 </script>
 

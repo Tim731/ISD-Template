@@ -24,3 +24,9 @@
   background-color: var(--p-primary-300);
   border-color: var(--p-primary-300);
 }
+
+/* input text */
+.p-inputtext,
+.p-inputwrapper {
+  width: 100% !important;
+}

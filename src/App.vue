@@ -1,33 +1,8 @@
-<script setup>
-import { RouterView, useRoute } from 'vue-router';
-import SidebarComponent from './components/layouts/SidebarComponent.vue';
-import HeaderComponent from './components/layouts/HeaderComponent.vue';
-import FooterColorComponent from './components/layouts/FooterColorComponent.vue';
-import Button from 'primevue/button';
-import { useSidebarStore } from '@/stores/sidebar'; // Import the store
-import { storeToRefs } from 'pinia';
-
-const sidebarStore = useSidebarStore(); // Get the store instance
-const { isSidebarOpen } = storeToRefs(sidebarStore); // Get the reactive state
-const route = useRoute();
-
-const toggleSidebar = () => {
-  sidebarStore.toggleSidebar(); // Use the store's action
-};
-</script>
-
 <template>
+  <Toast />
   <div v-if="route.meta.withHeader">
     <HeaderComponent title="ISD Web App Template" @toggle-sidebar="toggleSidebar">
-      <template #actions>
-        <div class="text-sm lg:text-xl font-bold">
-          <span>Mabuhay, </span>
-          <span class="font-bold"> Ranniel! </span>
-          <Button severity="success" text class="lg:ml-3">
-            <i class="pi pi-sign-out "></i>
-          </Button>
-        </div>
-      </template>
+      <template #actions></template>
     </HeaderComponent>
     <div class="flex w-full" style="height: calc(100vh - 86px);">
       <SidebarComponent :sidebarClass="['ml-[-300px] lg:ml-0', isSidebarOpen ? 'ml-0!' : 'ml-[-300px]!']">
@@ -40,10 +15,35 @@ const toggleSidebar = () => {
   </div>
 
   <template v-else>
-    <RouterView />
+    <NoHeaderComponent>
+      <RouterView />
+      <template #footer>
+        <FooterColorComponent>
+          <span class="text-sm text-white mb-5">
+            © 2025 PhilRice - Information Systems Division. All rights reserved.
+          </span>
+        </FooterColorComponent>
+      </template>
+    </NoHeaderComponent>
   </template>
 </template>
 
-<style scoped>
-/* ... (rest of your existing styles) ... */
-</style>
+<script setup>
+import { RouterView, useRoute } from 'vue-router';
+import SidebarComponent from './components/layouts/SidebarComponent.vue';
+import HeaderComponent from './components/layouts/HeaderComponent.vue';
+import NoHeaderComponent from './components/layouts/NoHeaderComponent.vue';
+import FooterColorComponent from './components/layouts/FooterColorComponent.vue';
+import Button from 'primevue/button';
+import { useSidebarStore } from '@/stores/sidebar'; // Import the store
+import { storeToRefs } from 'pinia';
+import Toast from 'primevue/toast';
+
+const sidebarStore = useSidebarStore(); // Get the store instance
+const { isSidebarOpen } = storeToRefs(sidebarStore); // Get the reactive state
+const route = useRoute();
+
+const toggleSidebar = () => {
+  sidebarStore.toggleSidebar(); // Use the store's action
+};
+</script>
