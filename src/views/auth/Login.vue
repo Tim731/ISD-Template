@@ -12,6 +12,10 @@
           <Password id="password" v-model="password" :feedback="false" required />
         </div>
         <Button label="Login" class="w-full" type="submit" :loading="isLoading" />
+        <div class="text-xs text-center mt-2">
+          <span>Having trouble logging in? Email us at </span>
+          <a href="mailto:isdsupport@mail.philrice.gov.ph" class="text-green">isdsupport@mail.philrice.gov.ph</a>
+        </div>
       </form>
     </div>
   </div>

@@ -144,7 +144,13 @@ onMounted(() => {
 
 <style scoped>
 .sidebar-custom {
-  background: transparent url('/img/Maintenance.png') 50% 10% no-repeat padding-box;
+  background-color: transparent;
+  background-image: url('/img/Maintenance@2x.png');
+  background-repeat: no-repeat;
+  background-size: 150% 150%;
+  background-position: center;
+  background-origin: border-box;
+  background-clip: border-box;
   box-shadow: 0px 3px 6px #00000029;
   padding: 10px;
   color: white;

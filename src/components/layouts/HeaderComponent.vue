@@ -12,9 +12,10 @@
       <div class="flex items-center">
         <!-- Add any header actions here, e.g., user profile, notifications -->
         <slot name="actions">
-          <div class="text-sm lg:text-lg font-bold">
-            <span>Mabuhay, </span>
-            <span class="font-bold"> Ranniel! </span>
+          <div class="text-sm lg:text-lg">
+            <span>Mabuhay,
+              <span class="font-bold">{{ authStore.user?.user.firstname }}</span>
+            </span>
             <Button severity="success" text class="lg:ml-3" @click="handleLogout()">
               <i class="pi pi-sign-out "></i>
             </Button>
